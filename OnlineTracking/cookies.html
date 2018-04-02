@@ -3,37 +3,44 @@
 <meta charset="utf-8" />
 <title>JavaScript Coockies</title>
 <script>
-function cookies(){
-    var browserversion = navigator.userAgent;
-    
-    if(browserversion.match(/Windows/i)){
-        if(browserversion.match(/Chrome/i)){
-            var name = "WindowsChrome";
-            var value = 1;
-        }else{
-            var name = "WindowsFirefox";
-            var value = 2;
+    function setCookie(cname) {
+        var date = new Date();
+        var exdays = 7;
+        date.setTime(date.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = "name=" + cname + ";" + expires + ";path=/";
+    }
+
+function getCookie() {
+    var name = "name=";
+    var doc = document.cookie;
+    var temp = doc.split(';');
+    for(var i = 0; i < temp.length; i++){
+        alert(t);
+        if(t.match(name)){
+            return t.substring(t.indexOf(name));
         }
     }
-    if(browserversion.match(/Ubuntu/i)){
-        if(browserversion.match(/Chrome/i)){
-            var name = "UbuntuChrome";
-            var value = 3;
-        }else{
-            var name = "UbuntuFirefox";
-            var value = 4;
-        }
-    }
-    
-    document.cookie = name+'='+value;
-    
-    alert(document.cookie);
+    return "";
+
 }
+
+function checkCookie() {
+    var user=getCookie();
+    if (user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:","");
+        if (user != "" && user != null) {
+            setCookie(user);
+        }
+    }
+}
+
 </script>
 
 
 </head>	
-<body>
-<button onclick="cookies()">" Which user am I? "</button>
+<body onload="checkCookie()">
 </body>
 </html>
